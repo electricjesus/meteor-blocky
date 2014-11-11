@@ -1,0 +1,1 @@
+Blocky = new Mongo.Collection('blocky');
