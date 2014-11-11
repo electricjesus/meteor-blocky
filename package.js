@@ -9,6 +9,11 @@ Package.onUse(function(api) {
   api.versionsFrom('METEOR@0.9.1.1');
   api.use(['meteor','mongo','mongo-livedata'],['client','server']);
   api.use(['templating'], 'client');
+  api.addFiles([
+    'lib/vex/js/vex.combined.min.js',
+    'lib/vex/css/vex.css',
+    'lib/vex/css/vex-theme-default.css',
+  ],'client');
   api.addFiles('electricjesus:blocky-common.js',['client','server']);
   api.addFiles('electricjesus:blocky-server.js','server');
   api.addFiles([

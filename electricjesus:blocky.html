@@ -1,3 +1,13 @@
 <template name="blky">
 	{{{blky_content UI.contentBlock}}}
 </template>
+<template name="blky_editor">
+	<span class="blky_edit">
+		<input type="hidden" name="_id" value="{{_id}}" />
+		<textarea name="content" rows="10">{{content}}</textarea>
+		<label for="markdown">
+			<input type="checkbox" name="markdown" />
+			Markdown?
+		</label>		
+	</span>
+</template>
