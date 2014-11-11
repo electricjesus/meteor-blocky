@@ -1,3 +1,3 @@
-Meteor.publish('blocky', function(name, version) {
-	return Blocky.find({name: name, version: version});
+Meteor.publish('blocky', function(options) {	
+	return Blocky.find(options, {sort: {added: -1}});
 });
