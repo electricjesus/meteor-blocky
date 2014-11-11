@@ -32,7 +32,12 @@ Template.registerHelper('blky_content', function(template, kw) {
 
 	} 	
 
-    return "<span class=\"blocky\" data-id=\"" + (blocky && blocky._id) + "\">" + (blocky && blocky.content) + "</span>";
+    return Meteor.user() ? 
+	    "<span class=\"blocky\" data-id=\"" + (blocky && blocky._id) + "\">" + 
+	    (blocky && blocky.content) + 
+	    "</span>"
+	  : (blocky && blocky.content)
+    ;
 });
 
 var createDOM = function(str) {

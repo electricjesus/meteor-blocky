@@ -1,6 +1,10 @@
 {
   "dependencies": [
     [
+      "accounts-base",
+      "1.1.2"
+    ],
+    [
       "application-configuration",
       "1.0.3"
     ],
@@ -61,6 +65,10 @@
       "1.0.1"
     ],
     [
+      "localstorage",
+      "1.0.1"
+    ],
+    [
       "logging",
       "1.0.4"
     ],
@@ -99,6 +107,10 @@
     [
       "retry",
       "1.0.1"
+    ],
+    [
+      "service-configuration",
+      "1.0.2"
     ],
     [
       "templating",
