@@ -1,4 +1,10 @@
+var Template = Package.templating.Template;
+var Blaze = Package.blaze.Blaze; // implied by `templating`
+var HTML = Package.htmljs.HTML; // implied by `blaze`
+
+
 Meteor.startup(function() {
+
 
 Template.registerHelper('blky_content', function(template, kw) {
 	var options = this;

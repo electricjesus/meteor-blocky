@@ -8,7 +8,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('METEOR@0.9.1.1');
   api.use(['meteor','mongo','mongo-livedata'],['client','server']);
-  api.use(['templating','accounts-base'], 'client');
+  api.use(['templating','blaze','htmljs','accounts-base'], 'client');
   api.addFiles([
     'lib/vex/js/vex.combined.min.js',
     'lib/vex/css/vex.css',
