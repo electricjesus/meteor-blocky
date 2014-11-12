@@ -34,15 +34,18 @@ Template.registerHelper('blky_content', function(template, kw) {
 
 	var canEdit;
 
-	if(	Meteor.userId &&		// depends on accounts-base
-		Roles && 				// depends on alanning:roles
-		BlockyConfig && 	// expects BlockyConfig.roles
+	if(	Meteor.userId &&						// depends on accounts-base
+		Roles && 								// depends on alanning:roles
+		BlockyConfig && 						// expects BlockyConfig.roles
 		typeof BlockyConfig.roles === 'object'	// roles must be array
 	)  {
 		canEdit = Roles.userIsInRole(Meteor.userId(), BlockyConfig.roles);
 	} else {
 		// fallback to canEdit if logged in.
-		canEdit = !!!Roles && (!!Meteor.user && !!Meteor.user()); 
+		canEdit = 
+			!BlockyConfig.strict && 			// if strict, disable fallback
+			!!!Roles && 						// fallback only if Roles does not exist
+			(!!Meteor.user && !!Meteor.user()); // check if user logged in.
 	}
 
     return canEdit ? 
