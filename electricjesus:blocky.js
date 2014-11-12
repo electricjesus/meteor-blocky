@@ -65,6 +65,10 @@ var createDOM = function(str) {
 Template.blky.rendered = function() {	
 };
 
+Template.registerHelper('blky_is_markdown', function() {
+	var options = this;
+});
+
 Template.blky.events({
 	'click span.blocky' : function(e) {
 		var target = $(e.currentTarget);			
@@ -81,7 +85,12 @@ Template.blky.events({
 				input: editor,
 				callback: function(data) {
 					target.children().removeAttr('style');
-					Blocky.update({_id: data._id}, {$set : {content: data.content}});
+					
+					var changes = {content: data.content};
+
+					if(data.markdown) changes.markdown = true;
+
+					Blocky.update({_id: data._id}, {$set : changes});
 				}
 			});
 		}
