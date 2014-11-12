@@ -30,9 +30,22 @@ Template.registerHelper('blky_content', function(template, kw) {
 			blocky = Blocky.find({_id: id});
 		}
 
-	} 	
+	}
 
-    return Meteor.user() ? 
+	var canEdit;
+
+	if(	Meteor.userId &&		// depends on accounts-base
+		Roles && 				// depends on alanning:roles
+		BlockyConfig && 	// expects BlockyConfig.roles
+		typeof BlockyConfig.roles === 'object'	// roles must be array
+	)  {
+		canEdit = Roles.userIsInRole(Meteor.userId(), BlockyConfig.roles);
+	} else {
+		// fallback to canEdit if logged in.
+		canEdit = !!!Roles && (!!Meteor.user && !!Meteor.user()); 
+	}
+
+    return canEdit ? 
 	    "<span class=\"blocky\" data-id=\"" + (blocky && blocky._id) + "\">" + 
 	    (blocky && blocky.content) + 
 	    "</span>"
@@ -48,7 +61,7 @@ var createDOM = function(str) {
 
 Template.blky.rendered = function() {	
 };
-console.log(BlockyConfig);
+
 Template.blky.events({
 	'click span.blocky' : function(e) {
 		var target = $(e.currentTarget);			
