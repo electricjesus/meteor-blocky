@@ -13,12 +13,13 @@ Package.onUse(function(api) {
     'lib/vex/js/vex.combined.min.js',
     'lib/vex/css/vex.css',
     'lib/vex/css/vex-theme-default.css',
-  ],'client');
+  ],'client');  
   api.addFiles('electricjesus:blocky-common.js',['client','server']);
   api.addFiles('electricjesus:blocky-server.js','server');
   api.addFiles([
   	'electricjesus:blocky.js',
-  	'electricjesus:blocky.html'
+  	'electricjesus:blocky.html',
+    'electricjesus:blocky.css'
   ],'client');
 });
 

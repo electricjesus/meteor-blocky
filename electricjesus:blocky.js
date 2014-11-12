@@ -55,7 +55,7 @@ Template.registerHelper('blky_content', function(template, kw) {
 	}
 
     return canEdit ? 
-	    "<span class=\"blocky\" data-id=\"" + (blocky && blocky._id) + "\">" + 
+	    "<span class=\"blocky\" data-id=\"" + (blocky && blocky._id) + "\">" + 	    
 	    (blocky && blocky.content) + 
 	    "</span>"
 	  : (blocky && blocky.content)
